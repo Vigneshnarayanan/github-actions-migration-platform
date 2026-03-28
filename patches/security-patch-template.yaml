@@ -1,0 +1,17 @@
+id: security-patch-template
+type: security
+name: Security Patch Template
+severity: high
+description: Template for security patches
+dependencies: []
+commands:
+  - echo "Running security patch"
+  - npm audit fix
+validation:
+  - npm test
+  - npm run lint
+rollback:
+  - git checkout package.json
+  - npm ci
+verification:
+  - npm audit

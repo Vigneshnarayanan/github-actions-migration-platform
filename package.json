@@ -1,0 +1,37 @@
+{
+  "name": "github-actions-migration-platform",
+  "version": "0.1.0",
+  "description": "Platform for migrating legacy applications to GitHub Actions with application patching",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/cli.js",
+    "dev": "node --watch src/cli.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "analyze": "node src/commands/analyze.js",
+    "migrate": "node src/commands/migrate.js",
+    "patch": "node src/commands/patch.js",
+    "status": "node src/commands/status.js"
+  },
+  "keywords": [
+    "github-actions",
+    "migration",
+    "ci-cd",
+    "patching"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.0.0",
+    "dotenv": "^16.3.1",
+    "js-yaml": "^4.1.0",
+    "octokit": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "jest": "^29.7.0"
+  }
+}

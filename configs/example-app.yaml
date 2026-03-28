@@ -1,0 +1,29 @@
+name: example-app
+type: nodejs
+source:
+  type: github
+  url: https://github.com/myorg/example-app
+ci:
+  platform: jenkins
+  config_path: Jenkinsfile
+patches:
+  enabled: true
+  frequency: weekly
+  types:
+    - dependency
+    - security
+build:
+  commands:
+    - npm install
+    - npm run build
+test:
+  commands:
+    - npm test
+    - npm run test:coverage
+deploy:
+  enabled: true
+  environments:
+    - staging
+    - production
+  commands:
+    - npm run deploy

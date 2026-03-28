@@ -1,0 +1,52 @@
+name: Application Patch Workflow
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+  workflow_dispatch:
+    inputs:
+      app_name:
+        description: 'Application name to patch'
+        required: true
+      patch_type:
+        description: 'Type of patch: dependency, security, version'
+        required: false
+        default: 'dependency'
+      dry_run:
+        description: 'Preview patches without applying'
+        required: false
+        default: 'true'
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Apply patches
+        run: npm run patch -- ${{ github.event.inputs.app_name }} --type=${{ github.event.inputs.patch_type }} --dry-run=${{ github.event.inputs.dry_run }}
+      
+      - name: Create pull request for patches
+        if: github.event_name == 'workflow_dispatch'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: 'chore: apply patches to ${{ github.event.inputs.app_name }}'
+          title: 'Apply patches to ${{ github.event.inputs.app_name }}'
+          body: 'Automated patch application'
+          branch: 'patches/${{ github.event.inputs.app_name }}-${{ github.run_number }}'
+      
+      - name: Upload patch report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: patch-report-${{ github.event.inputs.app_name }}
+          path: reports/
