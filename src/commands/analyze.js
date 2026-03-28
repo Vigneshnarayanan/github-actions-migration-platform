@@ -10,7 +10,7 @@ async function analyzeApplication(appName) {
   
   try {
     const configMgr = new ConfigManager('./configs');
-    const config = configMgr.loadApplicationConfig(appName);
+    configMgr.loadApplicationConfig(appName);
     
     const analysis = {
       appName,

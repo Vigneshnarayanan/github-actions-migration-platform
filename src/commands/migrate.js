@@ -16,7 +16,7 @@ async function migrateApplication(appName, target = 'github-actions', options = 
     const configMgr = new ConfigManager('./configs');
     
     logger.info(`Loading configuration for ${appName}`);
-    const config = configMgr.loadApplicationConfig(appName);
+    configMgr.loadApplicationConfig(appName);
     
     const migrationPlan = {
       appName,
