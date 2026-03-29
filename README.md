@@ -448,6 +448,6 @@ Made with ❤️ by [Vignesh Narayanan](https://github.com/Vigneshnarayanan)
 
 [![Twitter](https://img.shields.io/badge/twitter-follow-blue.svg?style=flat-square)](https://twitter.com/yourusername)
 [![GitHub](https://img.shields.io/badge/github-follow-lightgrey.svg?style=flat-square)](https://github.com/Vigneshnarayanan)
-[![LinkedIn](https://img.shields.io/badge/linkedin-connect-blue.svg?style=flat-square)](https://linkedin.com/in/yourusername)
+[![LinkedIn](https://img.shields.io/badge/linkedin-connect-blue.svg?style=flat-square)](https://linkedin.com/in/vigneshnarayanann)
 
 </div>
